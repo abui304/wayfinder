@@ -4,7 +4,7 @@
 }
 
 .home-container {
-  background-image: url('../assets/backgrounds/celestialbkg1.png');
+  background-image: url('../assets/background/celestialbkg1.png');
   background-size: contain; /* Changed from cover to contain */
   background-position: center;
   background-repeat: no-repeat;
