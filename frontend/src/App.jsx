@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react';
 
 function App() {
-    return (
-        <div>
-            <h1>This is the app, add routing and other stuff here</h1>
-            <div>This is the highest layer, do not add anything detaily here</div>
-        </div>
-    )
+  return (
+    <div>
+      <h1>Welcome to Wayfinder 🌌</h1>
+      <p>Your journey through the stars begins here.</p>
+    </div>
+  );
 }
+
+export default App;
