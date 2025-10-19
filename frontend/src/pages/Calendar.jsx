@@ -4,19 +4,30 @@ import axios from "axios";
 import "./Calendar.css";
 import TripNavBar from "../components/TripNavBar";
 import ItineraryDayCalendar from "../components/Itinerary"; 
+import mercury from "../assets/planets/mercury.png";
+import venus from "../assets/planets/venus.png";
+import earth from "../assets/planets/earth.png";
+import mars from "../assets/planets/mars.png";
+import jupiter from "../assets/planets/jupiter.png";
+import saturn from "../assets/planets/saturn.png";
+import neptune from "../assets/planets/neptune.png";
+import uranus from "../assets/planets/uranus.png";
+import pluto from "../assets/planets/pluto.png";
+import eris from "../assets/planets/eris.png";
 
 const PLANET_MAP = [
-  { name: "Mercury", color: "#a7a6a2" },
-  { name: "Venus", color: "#d4af37" },
-  { name: "Earth", color: "#2e8b57" },
-  { name: "Mars", color: "#b22222" },
-  { name: "Jupiter", color: "#e1b382" },
-  { name: "Saturn", color: "#c2b280" },
-  { name: "Neptune", color: "#4169e1" },
-  { name: "Uranus", color: "#afeeee" },
-  { name: "Pluto", color: "#374151" }, 
-  { name: "Eris", color: "#6a0dad" }, 
+  { name: "Mercury", img: mercury },
+  { name: "Venus", img: venus },
+  { name: "Earth", img: earth },
+  { name: "Mars", img: mars },
+  { name: "Jupiter", img: jupiter },
+  { name: "Saturn", img: saturn },
+  { name: "Neptune", img: neptune },
+  { name: "Uranus", img: uranus },
+  { name: "Pluto", img: pluto },
+  { name: "Eris", img: eris },
 ];
+
 const MAX_DAYS_DISPLAY = 10;
 
 function Calendar() {
@@ -68,7 +79,6 @@ function Calendar() {
   if (loading) {
     return (
         <>
-            <TripNavBar />
             <div className="calendar-container loading">Loading your cosmic itinerary...</div>
         </>
     );
@@ -106,25 +116,30 @@ function Calendar() {
 
   return (
     <>
-      <TripNavBar destination={itinerary.destination} />
       <div className="calendar-container">
         <h1 className="calendar-title">
            {itinerary.destination} Itinerary ({itinerary.days.length} Days)
         </h1>
         
         <div className="planet-row">
-          {tripDays.map((day) => (
-            <div
-              key={day.dayNumber}
-              className={`planet ${day.dayNumber === activeDay ? "active" : ""}`}
-              style={{ backgroundColor: day.planet.color }}
-              onClick={() => setActiveDay(day.dayNumber)}
-              data-planet-name={day.planet.name}
-            >
-              <span className="day-label">Day {day.dayNumber}</span>
-            </div>
-          ))}
+            {tripDays.map((day) => (
+                <div
+                key={day.dayNumber}
+                className={`planet ${day.dayNumber === activeDay ? "active" : ""}`}
+                onClick={() => setActiveDay(day.dayNumber)}
+                data-planet-name={day.planet.name}
+                >
+                <img
+                    src={day.planet.img}
+                    alt={day.planet.name}
+                    className="planet-img"
+                />
+                <span className="planet-label">{day.planet.name}</span>
+                <span className="day-label">Day {day.dayNumber}</span>
+                </div>
+            ))}
         </div>
+
         
         <div className="daily-itinerary-display">
             {currentDayActivities && (
