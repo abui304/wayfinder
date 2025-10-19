@@ -1,9 +1,14 @@
 * {
   box-sizing: border-box;
+  
 }
 
 .home-container {
-  background: radial-gradient(circle at top, #0b0d29, #050417);
+  background-image: radial-gradient(circle at top, rgba(11, 13, 41, 0.7), rgba(5, 4, 23, 0.9)),
+              url('../assets/background/space-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: white;
   height: 100vh;
   display: flex;
@@ -40,7 +45,7 @@
 .graphic-section {
   width: 40%;
   height: 400px;
-  background: rgba(255, 255, 255, 0.05);
+  /*background: rgba(255, 255, 255, 0.05);*/
   border-radius: 20px;
 }
 
@@ -48,7 +53,7 @@
   font-family: 'StarlightRune', sans-serif;
   font-size: 4rem;
   overflow: hidden; /* Ensures the text is hidden while typing */
-  border-right: 3px solid #c0a379; /* The blinking caret */
+  border-right: 3px solid #272931; /* The blinking caret */
   white-space: nowrap;
   letter-spacing: 2px;
   width: 0;
