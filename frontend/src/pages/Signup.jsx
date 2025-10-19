@@ -56,7 +56,7 @@ function Signup() {
                 throw new Error(data.msg || 'Failed to create account.');
             }
             console.log("Signup successful. Navigating to home page...");
-            navigate('/');
+            navigate('/home');
         } catch (err) {
             setError(err.message);
         } finally {
@@ -74,7 +74,7 @@ function Signup() {
                 <form className="signup-form" onSubmit={handleSubmit}>
                     {error && <div className="error-message">{error}</div>}
                     {success && <div className="success-message">{success}</div>}
-                    
+
                     <div className="form-group">
                         <label>Username</label>
                         <input type="text" name="username" placeholder="Choose a username" onChange={handleChange} required />

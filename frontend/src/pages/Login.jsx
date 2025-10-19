@@ -40,7 +40,7 @@ function Login() {
 
             localStorage.setItem('token', data.token);
 
-            navigate('/');
+            navigate('/home');
 
         } catch (err) {
             setError(err.message);
