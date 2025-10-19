@@ -54,7 +54,7 @@ function Signup() {
 
                     <div className="form-group">
                         <label>How busy do you want your schedule to be?</label>
-                        <select name="activityFrequency" value={signupData.schedulePreference} onChange={handleChange} required>
+                        <select name="activityFrequency" value={signupData.activityFrequency} onChange={handleChange} required>
                             <option value="" disabled>Select your pace...</option>
                             <option value="relaxed">Relaxed</option>
                             <option value="moderate">Moderate</option>
