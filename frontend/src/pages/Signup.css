@@ -1,25 +1,45 @@
 .signup-container {
-    background: linear-gradient(180deg, #1b273f, #212838);
+    background-image: url('../assets/background/celestialbkg2.png'); /* Add background image */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #1b273f; /* Fallback color */
     min-height: 100vh;
     padding: 6rem 0;
     display: flex;
     justify-content: center;
     align-items: center;
     color: #ebdbc1;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'StarlightRune', sans-serif;
+    position: relative;
+}
+
+/* Add overlay for better readability */
+.signup-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(27, 39, 63, 0.4);
+    z-index: 1;
 }
 
 .signup-card {
-    background: rgba(39, 41, 49, 0.8);
+    background: rgba(39, 41, 49, 0.1); /* Increased opacity */
     border: 1px solid rgba(192, 163, 121, 0.3);
     box-shadow: 0 0 20px rgba(192, 163, 121, 0.15);
     border-radius: 16px;
-    padding: 2.5rem 3 rem;
+    padding: 2.5rem 3rem; /* Fixed spacing (removed space between 3 rem) */
     width: 450px;
     backdrop-filter: blur(10px);
+    position: relative; /* Ensure it stays above overlay */
+    z-index: 2;
 }
 
 .signup-title {
+    font-family: 'StarlightRune', sans-serif;
     color: #ebdbc1;
     text-align: center;
     font-size: 1.8rem;
@@ -28,6 +48,7 @@
 }
 
 .signup-subtitle {
+    font-family: 'StarlightRune', sans-serif;
     color: #838f9b;
     text-align: center;
     font-size: 0.95rem;
@@ -47,11 +68,11 @@
 }
 
 .signup-form label {
+    font-family: 'StarlightRune', sans-serif;
     color: #c0a379;
     font-size: 0.9rem;
     letter-spacing: 0.5px;
 }
-
 
 /* style for inputs and select dropdowns */
 .signup-form input,
@@ -63,7 +84,7 @@
     padding: 10px 14px;
     outline: none;
     transition: border-color 0.3s, box-shadow 0.3s;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'StarlightRune', sans-serif;
     font-size: 1rem;
 }
 
@@ -76,6 +97,7 @@
 .signup-btn {
     margin-top: 1rem;
     background: linear-gradient(90deg, #7b6b54, #c0a379);
+    font-family: 'StarlightRune', sans-serif;
     color: #1b273f;
     font-weight: 600;
     padding: 12px;
@@ -112,6 +134,7 @@
 
 .error-message,
 .success-message {
+  font-family: StarlightRune, sans-serif;
   padding: 12px;
   border-radius: 8px;
   text-align: center;

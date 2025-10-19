@@ -1,0 +1,48 @@
+/* ShootingStars.css */
+.shooting-stars-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5; /* Increased from 1 to ensure visibility */
+    overflow: hidden;
+}
+
+.shooting-star {
+    position: absolute;
+    width: 120px;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        transparent 0%,
+        #FFFFFF 20%,
+        #ebdbc1 50%,
+        transparent 100%);
+    border-radius: 50%;
+    filter: 
+        drop-shadow(0 0 10px #ebdbc1)
+        drop-shadow(0 0 20px rgba(235, 219, 193, 0.5));
+    opacity: 0;
+    pointer-events: none;
+}
+
+@keyframes shoot {
+    0% {
+        transform: translateX(0) translateY(0) rotate(45deg);
+        opacity: 0;
+        width: 0;
+    }
+    10% {
+        opacity: 1;
+        width: 120px;
+    }
+    80% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(100vw) translateY(100vh) rotate(45deg);
+        opacity: 0;
+        width: 0;
+    }
+}

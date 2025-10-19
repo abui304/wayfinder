@@ -6,7 +6,7 @@
   box-shadow: 0 0 20px rgba(192, 163, 121, 0.15); 
   border-radius: 16px;
   padding: 1.5rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'StarlightRune', sans-serif;
   backdrop-filter: blur(10px);
   color: #ebdbc1; 
 }
@@ -37,6 +37,7 @@
 }
 
 .activity-summary {
+  font-family: 'StarlightRune', sans-serif;
   font-size: 1.5rem;
   font-weight: 600;
   color: #ebdbc1; 
