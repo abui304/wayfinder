@@ -39,7 +39,7 @@ exports.generateItinerary = async (req, res) => {
                 const imageUr1 = await getImageForActivity(act.summary);
                 const newActivity = new Activity({
                     itinerary: newItinerary._id,
-                    timeslot: act.timeSlot,
+                    timeSlot: act.timeSlot,
                     summary: act.summary,
                     cost: act.cost,
                     imageUr1: imageUr1,
