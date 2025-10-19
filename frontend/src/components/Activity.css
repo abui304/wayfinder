@@ -1,0 +1,52 @@
+.activity-card {
+  display: flex;
+  gap: 24px; 
+  background: rgba(39, 41, 49, 0.8); 
+  border: 1px solid rgba(192, 163, 121, 0.3); 
+  box-shadow: 0 0 20px rgba(192, 163, 121, 0.15); 
+  border-radius: 16px;
+  padding: 1.5rem;
+  font-family: 'Poppins', sans-serif;
+  backdrop-filter: blur(10px);
+  color: #ebdbc1; 
+}
+
+.activity-image {
+  width: 220px; 
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #4d4538;
+}
+
+.activity-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.activity-details p {
+  margin: 4px 0;
+  color: #838f9b; 
+  font-size: 0.9rem;
+}
+
+.activity-details p strong {
+  color: #c0a379; 
+}
+
+.activity-summary {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ebdbc1; 
+  margin: 8px 0;
+  letter-spacing: 0.5px;
+}
+
+.activity-cost {
+  text-align: right;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ebdbc1;
+}
