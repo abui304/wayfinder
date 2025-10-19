@@ -4,17 +4,18 @@
 }
 
 .home-container {
-  background-image: radial-gradient(circle at top, rgba(11, 13, 41, 0.7), rgba(5, 4, 23, 0.9)),
-              url('../assets/background/space-bg.jpg');
-  background-size: cover;
+  background-image: url('../assets/backgrounds/celestialbkg1.png');
+  background-size: contain; /* Changed from cover to contain */
   background-position: center;
   background-repeat: no-repeat;
+  background-color: #050417; /* Added solid dark background behind image */
   color: white;
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-top: 80px; /* account for navbar */
+  padding-top: 80px;
+  position: relative;
 }
 
 .home-content {
