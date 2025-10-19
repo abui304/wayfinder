@@ -24,29 +24,35 @@ function Login() {
     return (
         <div className="login-container">
             <div className="login-card">
-                <h1 className="login-title">Welcome Back, Stargazer</h1>
+                <h1 className="login-title">Welcome Back, Traveler</h1>
                 <p className="login-subtitle">Log in to continue your cosmic journey.</p>
 
                 <form className="login-form" onSubmit={handleSubmit}>
-                    <label>Username</label>
-                    <input
-                        type="text"
-                        name="username"
-                        placeholder="celestial-traveler"
-                        value={credentials.username}
-                        onChange={handleChange}
-                        required
-                    />
+                    {/* Group 1: Username */}
+                    <div className="form-group">
+                        <label>Username</label>
+                        <input
+                            type="text"
+                            name="username"
+                            placeholder="celestial-traveler"
+                            value={credentials.username}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
 
-                    <label>Password</label>
-                    <input
-                        type="password"
-                        name="password"
-                        placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;"
-                        value={credentials.password}
-                        onChange={handleChange}
-                        required
-                    />
+                    {/* Group 2: Password */}
+                    <div className="form-group">
+                        <label>Password</label>
+                        <input
+                            type="password"
+                            name="password"
+                            placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;"
+                            value={credentials.password}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
 
                     <button type="submit" className="login-btn">
                         Enter the Cosmos
