@@ -3,6 +3,10 @@
 async function generateTravelItinerary(preferences) {
     const { destination, budget, daysCount, activityFrequency, activityLevel } = preferences;
 
+    const modelName = 'gemini-2.5-flash';
+    const apiKey = process.env.GEMINI_API_KEY; // api is in .env file
+    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`;
+
     // THIS IS THE PROMPT - channel our best prompt engineer
     const prompt = `Create a ${daysCount}-daytravel itinerary for a trip to ${destination}.
         The total budget for activites is around $${budget}.
@@ -20,7 +24,7 @@ async function generateTravelItinerary(preferences) {
         Please return the response as a JSON object only, with no other text before or ater it.
         The JSON object should have a single key "days", which is an array of day objects.
         Each day object should have "dayNumber" and "activities" (an array of activity objects).
-        Each activity object must have "timeSlot", "summary", "cost", and "location".
+        Each activity object must have "name" (a short, catchy title like "Eiffel Tower"), "timeSlot", "summary" (a 1-2 sentence description), "cost", and "location".
 
         Example format:
        {
@@ -29,12 +33,14 @@ async function generateTravelItinerary(preferences) {
              "dayNumber": 1,
              "activities": [
                {
+                 "name": "City Center",
                  "timeSlot": "9:00 AM - 1:00 PM",
                  "summary": "Explore the historic city center and its famous landmarks.",
                  "cost": 25,
                  "location": "Plaza Mayor, 28012 Madrid, Spain"
                },
                {
+                 "name": "Dinner at <RESTAURANT NAME>",
                  "timeSlot": "6:00 PM - 8:00 PM",
                  "summary": "Enjoy a traditional dinner at a highly-rated local restaurant.",
                  "cost": 50,
@@ -46,19 +52,33 @@ async function generateTravelItinerary(preferences) {
        }
    `;
 
-   const systemInstruction = "You are a helpful travel assistant named Wayfinder. Your gaol is to generate detailed and personalized travel itineraries in a structured JSON format.";
-   const apiKey = process.env.GEMINI_API_KEY; // api is in .env file
-   const apiUr1 = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+    const systemInstruction = "You are a helpful travel assistant named Wayfinder. Your gaol is to generate detailed and personalized travel itineraries in a structured JSON format.";
+   
 
-   const payload = {
-        contents: [{ parts: [{ text: prompt }] }],
-        systemInstruction: {
+// backend/services/geminiService.js (FINAL CORRECT PAYLOAD FOR v1 REST API)
+
+    const payload = {
+        contents: [
+            {
+            role: "user",
+            parts: [{ text: prompt }]
+            }
+        ],
+
+        // system instruction at top level
+        system_instruction: {
+            role: "system",
             parts: [{ text: systemInstruction }]
         },
-   };
+
+        generationConfig: {
+            response_mime_type: "application/json",
+            temperature: 0.7,
+        }
+    };
 
    try {
-    const response = await fetch(apiUr1, {
+    const response = await fetch(apiUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
@@ -75,10 +95,7 @@ async function generateTravelItinerary(preferences) {
     }
     const generatedText = result.candidates[0].content.parts[0].text;
 
-    // clean text to make sure is valid JSON before parsing
-    const cleanedText = generatedText.replace(/```json/g, '').replace(/```/g, '').trim();
-
-    return JSON.parse(cleanedText);
+    return JSON.parse(generatedText);
    } catch (error) {
         console.error('Error calling Gemini API:', error);
         throw new Error('Failed to generate itinerary from AI service.');

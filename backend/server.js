@@ -8,12 +8,15 @@ const connectDB = require('./config/db');
 const app = express();
 connectDB();
 
-app.use(cors());
+app.use(cors({
+    origin: "http://localhost:5173", // or whatever port your frontend uses
+    credentials: true
+}));
 app.use(express.json());
 
 app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/users', require('./routes/userRoutes'));
-app.use('/api/itineraries', require('./routes/itineraryRoutes'));
+app.use('/api/itinerary', require('./routes/itineraryRoutes'));
 
 const PORT = process.env.PORT || 6969;
 

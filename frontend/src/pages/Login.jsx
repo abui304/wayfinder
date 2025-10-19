@@ -36,7 +36,7 @@ function Login() {
 
             if (!response.ok) {
                 throw new Error(data.msg || 'Login failed. Please check your credentials.');
-            }
+            }          
 
             localStorage.setItem('token', data.token);
 

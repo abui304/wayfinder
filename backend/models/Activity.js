@@ -8,6 +8,10 @@ const ActivitySchema = new mongoose.Schema({
         ref: 'Itinerary',
         required: true,
     },
+    name: {
+        type: String,
+        required: true,
+    },
     timeSlot: {
         type: String,
         required: true,

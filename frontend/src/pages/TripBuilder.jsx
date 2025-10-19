@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import NavBar from "../components/NavBar";
 import "./TripBuilder.css";
 
@@ -9,6 +11,21 @@ function TripBuilder() {
         stayLength: "",
         budget: "",
     });
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+
+    const navigate = useNavigate();
+    const getToken = () => {
+        const token = localStorage.getItem("token");
+        console.log("Retrieved token:", token ? "Present" : "Missing");
+        if (!token) {
+            setError("You must be logged in to generate an itinerary");
+            navigate('/login');
+            return null;
+        }
+        return token;
+    };
+
 
     const handleChange = (e) => {
         setFormData({
@@ -17,18 +34,47 @@ function TripBuilder() {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("Form submitted:", formData);
+        setError(null);
+        setLoading(true);
+
+        const token = localStorage.getItem("token");
+        if (!token) {
+            setError("Authentication failed. Please log in.");
+            setLoading(false);
+            navigate('/login');
+            return;
+        }
+
+        try {
+          const res = await axios.post(
+            "http://localhost:6969/api/itinerary/generate", {
+              destination: `${formData.destinationCity}, ${formData.destinationCountry}`,
+              budget: Number(formData.budget),
+              daysCount: Number(formData.stayLength),
+            }, {
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+
+          const createdItinerary = res.data;
+          console.log("Generated Itinerary:", createdItinerary);
+          navigate(`/itinerary/${createdItinerary._id}`);
+        } catch (err) {
+          console.error("Error generating itinerary:", err);
+          const errorMessage = err.response && err.response.data && err.response.data.msg 
+                               ? err.response.data.msg 
+                               : "Failed to generate itinerary. Please try again.";
+          setError(errorMessage);
+        } finally {
+          setLoading(false);
+        }
     };
-    // fetch("/api/trip", { method: "POST", body: JSON.stringify(formData) })
-    /**
-     * await fetch("http://localhost:5000/api/trip", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-        });
-     */
+
 
     return (
     <>

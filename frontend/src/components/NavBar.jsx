@@ -5,9 +5,7 @@ import './NavBar.css';
 function NavBar() {
   return (
     <nav className="navbar">
-      <div className="nav-left">
-        <Link to="/login" className="nav-logo"></Link>
-      </div>
+      <div className="nav-left"></div>
       <div className="nav-right">
         <Link to="/tripbuilder">
             <button className="journey-btn">Start Your Journey</button>
