@@ -1,16 +1,19 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Signup.css";
 
 function Signup() {
+    const [error, setError] = useState(null);
+    const [success, setSuccess] = useState(null);
+    const [loading, setLoading] = useState(false);
     const [signupData, setSignupData] = useState({
-        name: "",
         username: "",
         email: "",
         password: "",
         activityFrequency: "",
         activityLevel: "",
     });
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         setSignupData({
@@ -19,10 +22,47 @@ function Signup() {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Handle signup logic here
-        console.log("Signup submitted: ", signupData);
+        setLoading(true);
+        setError(null);
+        setSuccess(null);
+
+        try {
+            const payload = {
+                username: signupData.username,
+                email: signupData.email,
+                password: signupData.password,
+                personality: {
+                    activityFrequency: signupData.activityFrequency,
+                    activityLevel: signupData.activityLevel,
+                }
+            };
+
+            console.log("Attempting to register with payload:", payload);
+            
+            const response = await fetch('http://localhost:6969/api/auth/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(payload),
+            });
+
+            const data = await response.json();
+            console.log("Received response from backend:", { status: response.status, body: data });
+
+            if (!response.ok) {
+                throw new Error(data.msg || 'Failed to create account.');
+            }
+            console.log("Signup successful. Navigating to home page...");
+            navigate('/');
+        } catch (err) {
+            setError(err.message);
+        } finally {
+            setLoading(false);
+        }
+        
     };
     
     return (
@@ -32,11 +72,9 @@ function Signup() {
                 <p className="signup-subtitle">Create your account to start exploring the universe.</p>
 
                 <form className="signup-form" onSubmit={handleSubmit}>
-                    <div className="form-group">
-                        <label>Full Name</label>
-                        <input type="text" name="name" placeholder="Enter name" onChange={handleChange} required />
-                    </div>
-
+                    {error && <div className="error-message">{error}</div>}
+                    {success && <div className="success-message">{success}</div>}
+                    
                     <div className="form-group">
                         <label>Username</label>
                         <input type="text" name="username" placeholder="Choose a username" onChange={handleChange} required />
@@ -72,8 +110,8 @@ function Signup() {
                         </select>
                     </div>
 
-                    <button type="submit" className="signup-btn">
-                        Embark on Your Journey
+                    <button type="submit" className="signup-btn" disabled={loading || success}>
+                        {loading ? 'Embarking...' : 'Embark on Your Journey'}
                     </button>
                 </form>
 

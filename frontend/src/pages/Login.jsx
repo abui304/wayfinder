@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Login.css';
 
 function Login() {
@@ -7,6 +7,9 @@ function Login() {
         username: '',
         password: '',
     });
+    const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         setCredentials({
@@ -15,10 +18,35 @@ function Login() {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Handle login logic here
-        console.log('Logging submitted: ', credentials);
+        setLoading(true);
+        setError(null);
+
+        try {
+            const response = await fetch('http://localhost:6969/api/auth/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(credentials),
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.msg || 'Login failed. Please check your credentials.');
+            }
+
+            localStorage.setItem('token', data.token);
+
+            navigate('/');
+
+        } catch (err) {
+            setError(err.message);
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
@@ -29,12 +57,13 @@ function Login() {
 
                 <form className="login-form" onSubmit={handleSubmit}>
                     {/* Group 1: Username */}
+                    {error && <div className="error-message">{error}</div>}
                     <div className="form-group">
                         <label>Username</label>
                         <input
                             type="text"
                             name="username"
-                            placeholder="celestial-traveler"
+                            placeholder="Enter your username"
                             value={credentials.username}
                             onChange={handleChange}
                             required
