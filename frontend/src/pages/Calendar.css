@@ -23,8 +23,8 @@
 }
 
 .planet {
-  width: 90px;
-  height: 90px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -32,6 +32,27 @@
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.planet.active {
+    /* Larger active size (optional) */
+    transform: scale(1.2); 
+    box-shadow: 0 0 15px 5px rgba(192, 163, 121, 0.7);
+    border: 3px solid #ebdbc1; /* White/Gilded border */
+}
+
+.day-label {
+    /* 🛑 DAY LABEL: Initially hidden by default, or subtle */
+    color: #fff; 
+    font-size: 0.7rem;
+    font-weight: 600;
+    /* Optional: make it subtle */
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+.planet:hover::before {
+    content: "Day " attr(data-day-number);
 }
 
 .planet:hover {

@@ -1,0 +1,157 @@
+.itinerary-calendar-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 24px;
+    background: rgba(39, 41, 49, 0.85);
+    border: 1px solid rgba(192, 163, 121, 0.4); 
+    box-shadow: 0 0 25px rgba(192, 163, 121, 0.25);
+    border-radius: 16px;
+    font-family: 'Poppins', sans-serif;
+    backdrop-filter: blur(10px);
+    color: #ebdbc1;
+}
+
+.itinerary-calendar-container h2 {
+    color: #c0a379;
+    margin-bottom: 20px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    max-height: 70vh;
+    overflow-y: auto;
+    height: 100%; /* Corrected: Allows max-height to control viewing area */
+    position: relative;
+    border-left: 1px solid rgba(192, 163, 121, 0.1);
+}
+
+.time-column {
+    display: flex;
+    flex-direction: column;
+    height: 1440px; /* Full timeline height */
+    position: relative;
+    border-right: 1px dashed rgba(192, 163, 121, 0.2);
+}
+
+.time-slot-label {
+    height: 60px; 
+    line-height: 60px;
+    text-align: right;
+    padding-right: 15px;
+    font-size: 0.85rem;
+    color: #838f9b;
+    font-weight: 500;
+    transform: translateY(-50%); 
+}
+
+.activities-column {
+    position: relative;
+    height: 1440px; /* Full timeline height */
+    padding-left: 10px;
+}
+
+.hour-line {
+    position: absolute;
+    width: 100%;
+    height: 60px;
+    border-bottom: 1px solid rgba(192, 163, 121, 0.1);
+    box-sizing: border-box;
+}
+
+.activity-block {
+    position: absolute;
+    width: 90%; 
+    left: 5%; 
+    
+    background-color: #c0a379;
+    color: #272931;
+    padding: 8px 12px;
+    border-radius: 6px;
+    box-shadow: 0 4px 10px rgba(192, 163, 121, 0.4); 
+    font-size: 0.9rem;
+    overflow: hidden;
+    z-index: 10; 
+    border-left: 4px solid #ebdbc1;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.activity-block:hover {
+    background-color: #d1b48d;
+    box-shadow: 0 6px 15px rgba(192, 163, 121, 0.6);
+    transform: translateY(-1px);
+}
+
+.activity-name {
+    font-weight: 700;
+    font-size: 1em;
+    margin-bottom: 2px;
+}
+
+.activity-times {
+    font-size: 0.8em;
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+/* -------------------------------------------------------------------
+   Modal Overlay Styles for Centering and Fade Effect
+   ------------------------------------------------------------------- */
+
+.activity-modal-overlay {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    
+    background-color: rgba(0, 0, 0, 0.85); 
+    
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    
+    z-index: 9999; 
+    
+    opacity: 0;
+    animation: fadeIn 0.3s forwards;
+}
+
+.activity-modal-content {
+    position: relative;
+    max-width: 650px; 
+    width: 90%;
+    padding: 0; /* Let the Activity card define its own padding */
+    background: transparent; /* Let the Activity card define its own background */
+    border-radius: 15px; 
+    
+    transform: scale(0.9);
+    animation: scaleUp 0.3s forwards;
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: transparent;
+    border: none;
+    color: #c0a379;
+    font-size: 1.8rem;
+    cursor: pointer;
+    line-height: 1;
+    z-index: 10000;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes scaleUp {
+    from { transform: scale(0.9); }
+    to { transform: scale(1); }
+}

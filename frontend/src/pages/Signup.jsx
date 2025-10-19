@@ -116,7 +116,7 @@ function Signup() {
                 </form>
 
                 <div className="login-text">
-                    Already a traveler? <Link to="/login">Log in here</Link>
+                    Already a traveler? <Link to="/">Log in here</Link>
                 </div>
             </div>
         </div>

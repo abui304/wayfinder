@@ -35,3 +35,14 @@
 .journey-btn:hover {
     transform: scale(1.05);
 }
+
+.trip-btn {
+    background: transparent;
+    color: #ebdbc1; /* Light text color */
+    border: 1px solid #c0a379; /* Gold border */
+}
+
+.trip-btn:hover {
+    background-color: rgba(192, 163, 121, 0.1); /* Subtle dark gold background hover */
+    color: #c0a379; /* Gold text on hover */
+}

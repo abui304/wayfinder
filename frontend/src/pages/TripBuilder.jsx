@@ -55,8 +55,7 @@ function TripBuilder() {
       const createdItinerary = res.data;
       console.log("Generated Itinerary:", createdItinerary);
 
-      navigate(`/calendar`); // ✅ temporarily go to calendar
-      // or navigate(`/itinerary/${createdItinerary._id}`);
+      navigate(`/calendar`);
     } catch (err) {
       console.error("Error generating itinerary:", err);
       const errorMessage =

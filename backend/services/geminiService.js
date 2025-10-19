@@ -12,9 +12,9 @@ async function generateTravelItinerary(preferences) {
         The total budget for activites is around $${budget}.
         The user's preferred activity frequency is "${activityFrequency}" and activity level is "${activityLevel}".
         Given the activity frequency:
-        - For 'relaxed', include 1-2 main activites per day.
-        - For 'moderate', include 2-3 main activites per day.
-        - For 'packed', include 3-5 main activites per day.
+        - For 'relaxed', include 3-4 main activites per day.
+        - For 'moderate', include 5-6 main activites per day.
+        - For 'packed', include 7-8 main activites per day.
         Given the activity level:
         - For 'chill', include activities that involve no physical activity.
         - For 'moderate', include activities that involve some physical activity.

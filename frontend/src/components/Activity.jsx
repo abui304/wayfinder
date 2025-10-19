@@ -14,7 +14,7 @@ const Activity = ({ activity }) => {
       <div className="activity-content">
         <div className="activity-details">
           <p className="activity-timeslot"><strong>Time:</strong> {activity.timeSlot}</p>
-          <h2 classNmae="activity-name">{activity.name}</h2>
+          <h2 className="activity-name">{activity.name}</h2>
           <p className="activity-summary">{activity.summary}</p>
           <p className="activity-location"><strong>Location:</strong> {activity.location}</p>
         </div>
