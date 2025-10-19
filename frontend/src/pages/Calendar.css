@@ -1,0 +1,52 @@
+.calendar-container {
+  background: radial-gradient(circle at top, #0b0d29, #050417);
+  min-height: 100vh;
+  color: white;
+  text-align: center;
+  padding: 4rem 2rem;
+  overflow-x: hidden;
+}
+
+.calendar-title {
+  font-family: 'StarlightRune', sans-serif;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  letter-spacing: 2px;
+  color: #c0a379;
+}
+
+.planet-row {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.planet {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.planet:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 25px rgba(192, 163, 121, 0.6);
+}
+
+.planet-label {
+  position: absolute;
+  bottom: -30px;
+  color: #ebdbc1;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+.planet.active {
+  box-shadow: 0 0 30px #c0a379;
+}

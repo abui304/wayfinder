@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import TripBuilder from "./pages/TripBuilder";
 import Signup from "./pages/Signup";
 import Login from './pages/Login';
+import Calendar from './pages/Calendar';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/tripbuilder" element={<TripBuilder />} />
         <Route path="/home" element={<Home />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/calendar" element={<Calendar />} />
       </Routes>
     </Router>
   );
