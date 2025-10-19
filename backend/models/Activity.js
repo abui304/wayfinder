@@ -16,11 +16,21 @@ const ActivitySchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    location: {
+        type: String,
+        default: '',
+    },
     cost: {
         type: Number,
         required: true,
         default: 0,
     },
+    imageUrl: {
+        type: String,
+        default: '',
+    },
+}, {
+    timestamps: true,
 });
 
 module.exports = mongoose.model('Activity', ActivitySchema);

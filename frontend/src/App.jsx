@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css'
 import Home from './pages/Home';
 import TripBuilder from "./pages/TripBuilder";
-import Itinerary from "./pages/Itinerary";
+import Signup from "./pages/Signup";
 
 function App() {
   return (
@@ -11,7 +11,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/tripbuilder" element={<TripBuilder />} />
-        <Route path="/itinerary/:tripId" element={<Itinerary />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
       </Routes>
     </Router>
   );
