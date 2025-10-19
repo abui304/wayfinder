@@ -19,11 +19,12 @@
 }
 
 .journey-btn {
+    font-family: 'StarlightRune', sans-serif;
     border: none;
     padding: 10px 20px;
     border-radius: 25px;
-    background-color: #212838;
-    color: white;
+    background-color: #c0a379;
+    color: c0a379;
     font-weight: 600;
     width: 180px;
     height: 40px;
