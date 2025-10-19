@@ -1,6 +1,6 @@
 // defines the schema for a travel itinerary
 
-const mogoose = require('mongoose');
+const mongoose = require('mongoose');
 
 const ItinerarySchema = new mongoose.Schema({
     user: {

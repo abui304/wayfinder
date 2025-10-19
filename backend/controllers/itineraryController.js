@@ -3,7 +3,7 @@
 const Itinerary = require('../models/Itinerary');
 const Activity = require('../models/Activity');
 const User = require('../models/User');
-const { generateTravelItinerary } = require('../service/geminiService');
+const { generateTravelItinerary } = require('../services/geminiService');
 
 exports.generateItinerary = async (requestAnimationFrame, res) => {
     try {
