@@ -8,8 +8,8 @@ function Home() {
             <NavBar />
             <div className="home-content">
                 <div className="text-section">
-                    <h1 className="headline">
-                        Hi Traveler
+                    <h1 className="headline typewriter">
+                        Hello Traveler,
                     </h1>
                     <p className="subtext">
                         Wayfinder: Discover your next destination through the stars.
