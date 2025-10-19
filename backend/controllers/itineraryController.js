@@ -4,12 +4,13 @@ const Itinerary = require('../models/Itinerary');
 const Activity = require('../models/Activity');
 const User = require('../models/User');
 const { generateTravelItinerary } = require('../services/geminiService');
+const { getImageForActivity } = require('../services/imageService');
 
-exports.generateItinerary = async (requestAnimationFrame, res) => {
+exports.generateItinerary = async (req, res) => {
     try {
         // 1. get user preferences
-        const user = await User.findById(requestAnimationFrame.user.id);
-        const { destination, budget, dayCount } = requestAnimationFrame.body;
+        const user = await User.findById(req.user.id);
+        const { destination, budget, daysCount } = req.body;
         const { activityFrequency, activityLevel } = user.personality;
 
         // 2. call gemini service to get the itin content
@@ -18,6 +19,7 @@ exports.generateItinerary = async (requestAnimationFrame, res) => {
             budget,
             daysCount,
             activityLevel,
+            activityFrequency
         });
 
         // 3. create and save the itin and activites to the db
@@ -34,19 +36,21 @@ exports.generateItinerary = async (requestAnimationFrame, res) => {
             let dailyCost = 0;
             const activityDocs = [];
             for (const act of day.activities) {
+                const imageUr1 = await getImageForActivity(act.summary);
                 const newActivity = new Activity({
                     itinerary: newItinerary._id,
-                    timeSLot: act.timeSlot,
-                    summary: atob.summary,
+                    timeslot: act.timeSlot,
+                    summary: act.summary,
                     cost: act.cost,
+                    imageUr1: imageUr1,
                 });
                 const savedActivity = await newActivity.save();
-                actovityDocs.push(savedActivity._id);
+                activityDocs.push(savedActivity._id);
                 dailyCost += savedActivity.cost;
             }
             savedDays.push({
                 dayNumber: day.dayNumber,
-                activities: activitiesDocs,
+                activities: activityDocs,
                 dailyCost: dailyCost
             });
             totalCost += dailyCost;
@@ -58,12 +62,8 @@ exports.generateItinerary = async (requestAnimationFrame, res) => {
         await newItinerary.save();
 
         // 4. send the created itin back to frontend
-        const populatedItinerary = await Itinerary.findById(newItinerary._id).populate({
-            path: 'days',
-            populate: {
-                path: 'activities',
-                model: 'Activity'
-            }
+         const populatedItinerary = await Itinerary.findById(newItinerary._id).populate({
+            path: 'days.activities'
         });
 
         res.status(201).json(populatedItinerary);
