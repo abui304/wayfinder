@@ -1,0 +1,45 @@
+* {
+  box-sizing: border-box;
+}
+
+.home-container {
+  background: radial-gradient(circle at top, #0b0d29, #050417);
+  color: white;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 80px; /* account for navbar */
+}
+
+.home-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8%;
+}
+
+.text-section {
+  /*max-width: 50%;*/
+  padding-top: 35vh;
+}
+
+.headline {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.subtext {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #d0d0d0;
+}
+
+.graphic-section {
+  width: 40%;
+  height: 400px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+}

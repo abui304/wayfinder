@@ -6,8 +6,8 @@
 }
 @font-face {
     font-family: 'StarlightRune';
-    src: url('frontend\src\assets\fonts\StarlightRune.woff') format('woff'),
-         url('frontend\src\assets\fonts\StarlightRune.woff2') format('woff2'),
+    src: (url('frontend\src\assets\fonts\StarlightRune.woff') format('woff'),
+         url('frontend\src\assets\fonts\StarlightRune.woff2') format('woff2'));
     font-weight: normal;
     font-style: normal;
     font-display: swap; /* Improves loading performance */

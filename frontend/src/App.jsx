@@ -1,11 +1,17 @@
 import React from 'react';
+import Home from './pages/Home';
+
+import TripBuilder from "./pages/TripBuilder";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
-    <div>
-      <h1>Welcome to Wayfinder 🌌</h1>
-      <p>Your journey through the stars begins here.</p>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/tripbuilder" element={<TripBuilder />} />
+      </Routes>
+    </Router>
   );
 }
 

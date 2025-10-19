@@ -1,0 +1,79 @@
+.tripbuilder-container {
+  background: linear-gradient(180deg, #1b273f, #212838);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ebdbc1;
+  font-family: 'Poppins', sans-serif;
+}
+
+.form-card {
+  background: rgba(39, 41, 49, 0.8);
+  border: 1px solid rgba(192, 163, 121, 0.3);
+  box-shadow: 0 0 20px rgba(192, 163, 121, 0.15);
+  border-radius: 16px;
+  padding: 2.5rem 3rem;
+  width: 450px;
+  backdrop-filter: blur(10px);
+}
+
+.form-title {
+  color: #ebdbc1;
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: 1px;
+}
+
+.form-subtitle {
+  color: #838f9b;
+  text-align: center;
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+}
+
+.trip-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+}
+
+.trip-form label {
+  color: #c0a379;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+}
+
+.trip-form input {
+  background: rgba(27, 39, 63, 0.6);
+  border: 1px solid #4d4538;
+  color: #ebdbc1;
+  border-radius: 8px;
+  padding: 10px 14px;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.trip-form input:focus {
+  border-color: #c0a379;
+  box-shadow: 0 0 10px rgba(192, 163, 121, 0.5);
+}
+
+.submit-btn {
+  margin-top: 1rem;
+  background: linear-gradient(90deg, #7b6b54, #c0a379);
+  color: #1b273f;
+  font-weight: 600;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(192, 163, 121, 0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  
+}

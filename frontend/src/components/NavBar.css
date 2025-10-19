@@ -1,0 +1,37 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 2.5rem;
+  background: transparent;
+  position: fixed; /* ✅ fixed keeps it pinned but visible */
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.nav-logo {
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: #272931;
+    letter-spacing: 1px;
+}
+
+.journey-btn {
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    background-color: #212838;
+    color: white;
+    font-weight: 600;
+    width: 180px;
+    height: 40px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.journey-btn:hover {
+    transform: scale(1.05);
+}
