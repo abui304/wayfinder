@@ -43,10 +43,11 @@
 }
 
 .subtext {
-  font-size: 1.1rem;
-  color: #c0a379;
-  margin-left: -80px;
-  margin-top: 3rem;
+    font-family: "Monaco", Monospace;
+    font-size: 1.1rem;
+    color: #c0a379;
+    margin-left: -80px;
+    margin-top: 3rem;
 }
 
 .graphic-section {
@@ -77,7 +78,7 @@
 /* Typing animation */
 @keyframes typing {
   from { width: 0; }
-  to { width: 7.5ch; }
+  to { width: 6.8ch; }
 }
 
 /* Caret blink */

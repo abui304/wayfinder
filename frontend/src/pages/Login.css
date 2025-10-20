@@ -50,10 +50,10 @@
 }
 
 .login-subtitle {
-    font-family: 'StarlightRune', sans-serif;
+    font-family: "Monaco", Monospace;
     color: #838f9b;
     text-align: center;
-    font-size: 0.95rem;
+    font-size: 0.75rem;
     margin-bottom: 2rem;
 }
 
@@ -66,14 +66,13 @@
 .login-form label {
     font-family: 'StarlightRune', sans-serif;
     color: #c0a379;
-    font-size: 0.9rem;
+    font-size: 1rem;
     letter-spacing: 1.5px;
     margin-bottom: 8px;
 }
 
 .login-form input {
-    font-family: 'StarlightRune', sans-serif;
-    font-size: 1rem;
+    font-family: "Monaco", Monospace;
     background: rgba(27, 39, 63, 0.6);
     border: 1px solid #4d4538;
     color: #ebdbc1;

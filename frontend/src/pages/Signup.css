@@ -48,10 +48,10 @@
 }
 
 .signup-subtitle {
-    font-family: 'StarlightRune', sans-serif;
+    font-family: "Monaco", Monospace;
+    font-size: 0.75rem;
     color: #838f9b;
     text-align: center;
-    font-size: 0.95rem;
     margin-bottom: 2rem;
 }
 
@@ -70,7 +70,7 @@
 .signup-form label {
     font-family: 'StarlightRune', sans-serif;
     color: #c0a379;
-    font-size: 0.9rem;
+    font-size: 1rem;
     letter-spacing: 0.5px;
 }
 
@@ -84,8 +84,7 @@
     padding: 10px 14px;
     outline: none;
     transition: border-color 0.3s, box-shadow 0.3s;
-    font-family: 'StarlightRune', sans-serif;
-    font-size: 1rem;
+    font-family: "Monaco", Monospace;
 }
 
 .signup-form input:focus,
@@ -95,15 +94,17 @@
 }
 
 .signup-btn {
+    font-family: 'StarlightRune', sans-serif;
+    letter-spacing: 1.5px;
     margin-top: 1rem;
     background: linear-gradient(90deg, #7b6b54, #c0a379);
-    font-family: 'StarlightRune', sans-serif;
     color: #1b273f;
     font-weight: 600;
-    padding: 12px;
+    padding: 0.75rem;
     border: none;
     border-radius: 25px;
     cursor: pointer;
+    box-shadow: 0 0 20px rgba(192, 163, 121, 0.3); /* Fixed typo: was 1922 */
     transition: transform 0.3s, box-shadow 0.3s;
     align-self: center;
 }
@@ -115,7 +116,7 @@
 .login-text {
     text-align: center;
     margin-top: 1.5rem;
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: #838f9b;
     padding-bottom: 20px;
 }
